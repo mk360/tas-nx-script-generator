@@ -5,6 +5,8 @@
         "lib": ["ES2020"],
         "skipLibCheck": true,
         "baseUrl": "./node_modules",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "rootDirs": ["./backend/src", "./frontend/src"],
     },
+    "include": ["./types", "./interfaces", "./enums"]
 }
