@@ -1,0 +1,10 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "target": "ES6",
+        "lib": ["ES2020"],
+        "skipLibCheck": true,
+        "baseUrl": "./node_modules",
+        "moduleResolution": "node"
+    },
+}
