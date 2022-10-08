@@ -1,6 +1,13 @@
 {
   "dependencies": {
-    "fastify": "^4.5.3"
+    "@tanstack/react-query": "^4.10.3",
+    "@trpc/client": "^10.0.0-proxy-beta.15",
+    "@trpc/next": "^10.0.0-proxy-beta.15",
+    "@trpc/react": "^10.0.0-proxy-beta.15",
+    "@trpc/server": "^10.0.0-proxy-beta.15",
+    "create-react-app": "^5.0.1",
+    "fastify": "^4.5.3",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "@jest/globals": "^29.0.3",
