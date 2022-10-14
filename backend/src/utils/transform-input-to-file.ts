@@ -1,10 +1,8 @@
 import FrameInput from "../../../interfaces/frame-input";
-import transformSingleInput from "./transform-single-input";
+import transformInputs from "./transform-single-input";
 
-function transformInputToFile(inputs: FrameInput[]) {
-    const fileContent = inputs.map(transformSingleInput).join("\n");
-
-    return fileContent;
+function transformInputToFile(inputs: FrameInput) {
+    return transformInputs(inputs);
 };
 
 export default transformInputToFile;

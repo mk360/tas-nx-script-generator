@@ -1,6 +1,6 @@
 import StickPosition from "../../../interfaces/stick-location";
 
-const MAXIMAL_FLICK_VALUE = (2 << 16) - 1;
+const MAXIMAL_FLICK_VALUE = 65535;
 
 function getStickFlickLocation(stickPosition: StickPosition) {
     const maxIntensity = stickPosition.intensity / MAXIMAL_FLICK_VALUE * 100;

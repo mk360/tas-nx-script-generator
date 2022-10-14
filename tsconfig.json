@@ -1,9 +1,14 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
-        "target": "ES6",
-        "lib": ["ES2020"],
+        "target": "ES5",
+        "lib": ["ES2020", "DOM"],
         "skipLibCheck": true,
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "outDir": "./lib",
+        "jsx": "react-jsx",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
     },
+    "exclude": ["./frontend"]
 }

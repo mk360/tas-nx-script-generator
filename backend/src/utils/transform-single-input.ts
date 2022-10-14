@@ -1,13 +1,18 @@
 import FrameInput from "../../../interfaces/frame-input";
 import getStickFlickLocation from "./get-stick-flick-position";
 
-function transformSingleInput(input: FrameInput) {
-    let inputArray: (string | number)[] = [input.frame];
-    inputArray.push(input.buttons.join(';'));
-    inputArray.push(getStickFlickLocation(input.leftStick));
-    inputArray.push(getStickFlickLocation(input.rightStick));
+function transformInputs(input: FrameInput) {
+    const inputArray: (string | number)[] = [];
+
+    for (let frame in input) {
+        inputArray.push(frame);
+        const frameData = input[frame];
+        inputArray.push(frameData.buttons.join(';'));
+        inputArray.push(getStickFlickLocation(frameData.leftStick));
+        inputArray.push(getStickFlickLocation(frameData.rightStick));
+    }
 
     return inputArray.join(' ');
 };
 
-export default transformSingleInput;
+export default transformInputs;
