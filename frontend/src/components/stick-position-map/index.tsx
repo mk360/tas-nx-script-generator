@@ -1,8 +1,9 @@
 import { useState } from "react";
+import Modal from "../modal";
 import StickPositionMapProps from "./props";
 
 function StickPositionMap(props: StickPositionMapProps) {
-    const { canPress = true, xPosition = 0, yPosition = 0, onJoystickMove, onPress, onSubmit } = props;
+    const { canPress = true, xPosition = 0, onClose, yPosition = 0, onPress, onSubmit } = props;
     const [liveXPosition, setLiveXPosition] = useState(xPosition);
     const [liveYPosition, setLiveYPosition] = useState(yPosition);
     const [angle, setAngle] = useState(0);
@@ -10,10 +11,16 @@ function StickPositionMap(props: StickPositionMapProps) {
     const [isPressed, setIsPressed] = useState(false);
 
     return (
-        <div style={{ backgroundColor: 'beige', color: 'darkgray' }}>
-            {canPress && <div><input style={{ width: '100%' }} type='checkbox' checked={isPressed} onChange={(e) => {
-                setIsPressed(e.target.checked);
-            }} /> Press Button</div>}
+        <Modal onClose={onClose}>
+            {canPress && (
+                <div>
+                    <input style={{ width: '100%' }} type='checkbox' checked={isPressed} onChange={(e) => {
+                        setIsPressed(e.target.checked);
+                    }} />
+                    Press Button
+                </div>
+            )}
+
             <div>
                 Joystick Angle <input type='number' max={360} min={-359} step={1} value={angle} onChange={(e) => {
                     setAngle(+e.target.value);
@@ -24,10 +31,13 @@ function StickPositionMap(props: StickPositionMapProps) {
 
             <div>
                 <div style={{ border: '1px solid black', width: 500, height: 500, position: 'relative' }}>
-                    <div draggable onDrag={console.log} style={{ padding: 10, cursor: 'pointer', borderRadius: '50%', top: 50, left: 50, border: '2px solid black', position: 'absolute' }} />
+                    <div draggable onDrag={(e) => {
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        setAngle(rect.top + e.clientY);
+                    }} style={{ padding: 10, cursor: 'pointer', borderRadius: '50%', top: 50, left: 50, border: '2px solid black', position: 'absolute' }} />
                 </div>
             </div>
-        </div>
+        </Modal>
     );
 };
 

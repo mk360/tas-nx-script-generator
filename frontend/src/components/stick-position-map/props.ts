@@ -4,8 +4,8 @@ interface StickPositionMapProps {
     canPress?: boolean;
     xPosition: number;
     yPosition: number;
+    onClose(): void;
     onPress(state: boolean): void;
-    onJoystickMove(coords: StickCoordinates): void;
     onSubmit(joystickState: StickCoordinates & { pressed: boolean }): void;
 }
 

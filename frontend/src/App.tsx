@@ -15,14 +15,19 @@ import StickPositionMap from './components/stick-position-map';
 function App() {
   // client.userById.query(24).then(console.log);
   const [isLeftStickDisplayed, setIsLeftStickDisplayed] = useState(false);
+  const [isRightStickDisplayed, setIsRightStickDisplayed] = useState(false);
 
   return (
     <div className='App-header'>
-      <div style={{ backgroundColor: 'beige', padding: 10, borderRadius: 10, position: 'relative' }}>
         {isLeftStickDisplayed && (
-          <div style={{ position: 'absolute', left: -180, top: -40, width: 80, wordWrap: 'break-word' }}>
-            <StickPositionMap onJoystickMove={() => {}} xPosition={0} yPosition={0} onPress={() => {}} onSubmit={() => {}} />
-          </div>
+          <StickPositionMap onClose={() => {
+            setIsLeftStickDisplayed(false);
+          }} xPosition={0} yPosition={0} onPress={() => {}} onSubmit={() => {}} />
+        )}
+        {isRightStickDisplayed && (
+            <StickPositionMap onClose={() => {
+              setIsRightStickDisplayed(false);
+            }} xPosition={0} yPosition={0} onPress={() => {}} onSubmit={() => {}} />
         )}
         <img useMap="#controller" src={ControllerDiagram} alt="Nintendo Switch Pro Controller Diagram" />
         <map id='controller' name='controller'>
@@ -37,11 +42,12 @@ function App() {
           <area onClick={() => {
             setIsLeftStickDisplayed(!isLeftStickDisplayed);
           }} style={{ cursor: 'pointer' }} shape="rect" coords="51, 49, 108, 103" href="#" title="Left Stick (Click to expand)" alt="" target="" download="" />
-          <area style={{ cursor: 'pointer' }} shape="rect" coords="218, 102, 274, 161" href="#" title="Right Stick (Click to expand)" alt="" target="" download="" />
+          <area onClick={() => {
+            setIsRightStickDisplayed(!isRightStickDisplayed);
+          }} style={{ cursor: 'pointer' }} shape="rect" coords="218, 102, 274, 161" href="#" title="Right Stick (Click to expand)" alt="" target="" download="" />
           <area style={{ cursor: 'pointer' }} shape="rect" coords="134, 35, 157, 63" href="#" title="- Button" alt="" target="" download="" />
           <area style={{ cursor: 'pointer' }} shape="rect" coords="235, 36, 257, 60" href="#" title="+ Button" alt="" target="" download="" />
         </map>
-      </div>
     </div>
   );
 }
